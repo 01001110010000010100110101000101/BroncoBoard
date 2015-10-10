@@ -138,5 +138,12 @@ public class WebController {
         ModelAndView model = new ModelAndView("board");
         return model;
     }
+    
+    /* This method returns a help board */
+    @RequestMapping(value = "/help", method = RequestMethod.GET)
+    ModelAndView getHelp() {
+        ModelAndView models = new ModelAndView("help");
+        return models;
+    }
 
 }
