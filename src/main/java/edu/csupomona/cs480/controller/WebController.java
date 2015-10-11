@@ -145,5 +145,12 @@ public class WebController {
         ModelAndView models = new ModelAndView("help");
         return models;
     }
+    
+    /* This method returns a sample board */
+    @RequestMapping(value = "/sample", method = RequestMethod.GET)
+    ModelAndView getSample() {
+        ModelAndView model = new ModelAndView("sample");
+        return model;
+    }
 
 }
