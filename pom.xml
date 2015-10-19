@@ -41,6 +41,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
+<!-- These are the dependency for the security -->		
+<!-- 		<dependency> -->
+<!--             <groupId>org.springframework.boot</groupId> -->
+<!--             <artifactId>spring-boot-starter-security</artifactId> -->
+<!--         </dependency>  -->
 
 		<dependency>
 			<groupId>junit</groupId>
