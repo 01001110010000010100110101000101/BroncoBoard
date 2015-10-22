@@ -47,6 +47,13 @@
 <!--             <artifactId>spring-boot-starter-security</artifactId> -->
 <!--         </dependency>  -->
 
+		<!-- Dependency for the database handling -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>4.2.2.RELEASE</version>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
