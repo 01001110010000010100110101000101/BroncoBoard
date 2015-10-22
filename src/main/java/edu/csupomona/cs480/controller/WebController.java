@@ -108,31 +108,7 @@ public class WebController {
     void deleteUser(
     		@PathVariable("userId") String userId) {
     	userManager.deleteUser(userId);
-    }
-
-    /**
-     * This API lists all the users in the current database.
-     *
-     * @return
-     */
-    @RequestMapping(value = "/cs480/users/list", method = RequestMethod.GET)
-    List<User> listAllUsers() {
-    	return userManager.listAllUsers();
-    }
-
-    /*********** Web UI Test Utility **********/
-    /**
-     * This method provide a simple web UI for you to test the different
-     * functionalities used in this web service.
-     */
-    @RequestMapping(value = "/cs480/home", method = RequestMethod.GET)
-    ModelAndView getUserHomepage() {
-        ModelAndView modelAndView = new ModelAndView("home");
-        modelAndView.addObject("users", listAllUsers());
-        return modelAndView;
-    }
-
-    /* This method returns a sample board */
+    }    /* This method returns a sample board */
     @RequestMapping(value = "/board", method = RequestMethod.GET)
     ModelAndView getBoard() {
         ModelAndView model = new ModelAndView("board");
@@ -160,4 +136,27 @@ public class WebController {
         return model;
     }
 
+
+
+    /**
+     * This API lists all the users in the current database.
+     *
+     * @return
+     */
+    @RequestMapping(value = "/cs480/users/list", method = RequestMethod.GET)
+    List<User> listAllUsers() {
+    	return userManager.listAllUsers();
+    }
+
+    /*********** Web UI Test Utility **********/
+    /**
+     * This method provide a simple web UI for you to test the different
+     * functionalities used in this web service.
+     */
+    @RequestMapping(value = "/cs480/home", method = RequestMethod.GET)
+    ModelAndView getUserHomepage() {
+        ModelAndView modelAndView = new ModelAndView("home");
+        modelAndView.addObject("users", listAllUsers());
+        return modelAndView;
+    }
 }
