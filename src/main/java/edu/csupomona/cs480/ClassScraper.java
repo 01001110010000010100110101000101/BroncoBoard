@@ -20,9 +20,14 @@ public class ClassScraper {
 		Set<String> classNames = new HashSet<String>();
 		for(Element link: links) {
 			String title = link.text();
+			String number;
 			String department = title.substring(0, title.indexOf(" "));
 			title = title.substring(title.indexOf(" ")+1);
-			String number = title.substring(0, title.indexOf(" "));
+			if(title.indexOf("/") != -1) {
+				number = title.substring(0, Math.min(title.indexOf(" "), title.indexOf("/")));
+			} else {
+                number = title.substring(0, title.indexOf(" "));
+			}
 			classNames.add(department + number);
 		}
 		return classNames;
