@@ -113,32 +113,6 @@ public class WebController {
     void deleteUser(
     		@PathVariable("userId") String userId) {
     	userManager.deleteUser(userId);
-    }    /* This method returns a sample board */
-    @RequestMapping(value = "/board", method = RequestMethod.GET)
-    ModelAndView getBoard() {
-        ModelAndView model = new ModelAndView("board");
-        return model;
-    }
-    
-    /* This method returns a help board */
-    @RequestMapping(value = "/help", method = RequestMethod.GET)
-    ModelAndView getHelp() {
-        ModelAndView models = new ModelAndView("help");
-        return models;
-    }
-    
-    /* This method returns a sample board */
-    @RequestMapping(value = "/sample", method = RequestMethod.GET)
-    ModelAndView getSample() {
-        ModelAndView model = new ModelAndView("sample");
-        return model;
-    }
-    
-    /* This method returns a sample board */
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    ModelAndView getTest() {
-        ModelAndView model = new ModelAndView("test");
-        return model;
     }
 
 
@@ -176,4 +150,27 @@ public class WebController {
     		return null;
     	}
     }
+    
+    
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    ModelAndView getHelp() {
+        ModelAndView models = new ModelAndView("login");
+        return models;
+    }
+   
+
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    ModelAndView getSample() {
+        ModelAndView model = new ModelAndView("registration");
+        return model;
+    }
+    
+    /* This method returns a sample board */
+    @RequestMapping(value = "/success", method = RequestMethod.GET)
+    ModelAndView getTest() {
+        ModelAndView model = new ModelAndView("success");
+        return model;
+    }
+    
+    
 }

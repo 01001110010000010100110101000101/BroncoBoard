@@ -9,7 +9,7 @@
 
 	<body>
         <div class="container">
-        	<h1>Sample</h1>
+        	<h1>registration</h1>
         </div>
 	</body>
 </html>
