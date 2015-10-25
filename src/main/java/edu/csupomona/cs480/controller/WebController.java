@@ -165,12 +165,10 @@ public class WebController {
         return model;
     }
     
-    /* This method returns a sample board */
+
     @RequestMapping(value = "/success", method = RequestMethod.GET)
     ModelAndView getTest() {
         ModelAndView model = new ModelAndView("success");
         return model;
     }
-    
-    
 }
