@@ -8,6 +8,7 @@ import java.util.Date;
  */
 public class User {
 
+	private int no;
 	/** The unique user Id */
     private String id;
     /** The unique user Id */
@@ -16,6 +17,14 @@ public class User {
     private String major;
     /** The timestamp when the user is being created */
     private String creationTime = new Date(System.currentTimeMillis()).toString();
+    
+    public int getNo(){
+    	return no;
+    }
+    
+    public void setNo(int no){
+    	this.no = no;
+    }
 
     public String getId() {
         return id;

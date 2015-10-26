@@ -5,9 +5,13 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import edu.csupomona.cs480.data.provider.FSUserManager;
 import edu.csupomona.cs480.data.provider.UserManager;
+import edu.csupomona.cs480.data.bo.UserBo;
+import edu.csupomona.cs480.data.User;
 
 @Configuration
 @EnableAutoConfiguration
@@ -34,7 +38,9 @@ public class App {
      * you cannot put extra main method when building your project.
      */
     public static void main(String[] args) throws Exception {
-        // Run Spring Boot
-        SpringApplication.run(App.class, args);
+       //Run Spring Boot
+       SpringApplication.run(App.class, args);
+       
+    	
     }
 }
