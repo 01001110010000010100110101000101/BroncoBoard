@@ -171,4 +171,10 @@ public class WebController {
         ModelAndView model = new ModelAndView("success");
         return model;
     }
+    
+    @RequestMapping(value = "/rcptest", method = RequestMethod.GET)
+    ModelAndView getMyA5() {
+        ModelAndView model = new ModelAndView("rcptest");
+        return model;
+    }
 }

@@ -112,6 +112,12 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.9.13</version>
         </dependency> 
+        
+        <dependency>
+    		<groupId>org.eclipse</groupId>
+    		<artifactId>rcp</artifactId>
+    		<version>3.2.0-v20070612</version>
+		</dependency>
 
 	</dependencies>
 
