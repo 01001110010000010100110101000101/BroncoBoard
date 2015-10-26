@@ -32,15 +32,5 @@ public class ClassScraper {
 		}
 		return classNames;
 	}
-	
-	public static void main(String[] args) {
-		ClassScraper scrape = new ClassScraper();
-		try {
-            Set<String> classNames = scrape.getClassNames();
-            System.out.print(classNames);
-		} catch (IOException e) {
-			System.out.println("Caught IOException");
-		}
-	}
 
 }
