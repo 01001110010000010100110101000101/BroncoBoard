@@ -5,44 +5,87 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/chat.css" rel="stylesheet">
 	</head>
 
-	<body>
+	<body ng-controller="TabController as tab">
         <div class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
                     <a href="#" class="navbar-brand">BroncoBoard</a>
-                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
                 </div>
-
-                <div class="collapse navbar-collapse navHeaderCollapse">
                     <ul class="nav navbar-nav navbar-right nav-tabs">
-                        <li role="presentation" class="active"><a href="#">Boards</a></li>
-                        <li role="presentation"><a href="#">Messaging</a></li>
+                        <li role="presentation" ng-class="{ active: tab.isSet(0) }"><a href ng-click="tab.setTab(0)">Boards</a></li>
+                        <li role="presentation" ng-class="{ active: tab.isSet(1) }"><a href ng-click="tab.setTab(1)">Messaging</a></li>
                     </ul>
-                </div>
             </div>
         </div>
 
-        <div class="container" ng-controller="BoardsController as boards">
+        <div class="container" ng-controller="BoardsController as b" ng-show="tab.isSet(0)">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" href="#boardsCollapse" aria-expanded="false" aria-controls="boardsCollapse" ng-click="boards.showClasses()">Show Classes</a>
+                            <a role="button" data-toggle="collapse" href="#boardsCollapse" aria-expanded="false" aria-controls="boardsCollapse" ng-click="b.showClasses()">Show Classes</a>
                         </h4>
                     </div>
                     <div class="panel-collapse collapse" id="boardsCollapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
-                            <span ng-repeat="class in boards.classes">
+                            <span ng-repeat="class in b.classes">
                                 {{ class }},
-                            </pan>
+                            </span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" ng-controller="MessagingController as m" ng-show="tab.isSet(1)">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <span class="glyphicon glyphicon-comment"></span> CLASS_NAME
+                        </div>
+                        <div class="panel-body" id="chat-box">
+                            <ul class="chat">
+                                <li class="left clearfix">
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">User_1</strong> <small class="pull-right text-muted">
+                                                <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                            dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="left clearfix">
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">User_2</strong> <small class="pull-right text-muted">
+                                                <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                                        </div>
+                                        <p>
+                                            NOTICE: This is just the front end!!! This doesn't have any functionality yet.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="input-group">
+                                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary btn-sm" id="btn-chat">
+                                        Send</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2"></div>
                 </div>
             </div>
         </div>
