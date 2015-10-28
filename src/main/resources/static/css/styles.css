@@ -1,12 +1,3 @@
-body { 
-    background: url(../img/campus_bg.jpg) no-repeat top fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+#app-body { 
+    padding-top: 20px;
 }
-
-.panel-default {
-    margin-top:140px;
-}
-.form-group.last { margin-bottom:0px; }
