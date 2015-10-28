@@ -18,6 +18,7 @@
                     <ul class="nav navbar-nav navbar-right nav-tabs">
                         <li role="presentation" ng-class="{ active: tab.isSet(0) }"><a href ng-click="tab.setTab(0)">Boards</a></li>
                         <li role="presentation" ng-class="{ active: tab.isSet(1) }"><a href ng-click="tab.setTab(1)">Messaging</a></li>
+                        <li role="presentation" ng-class="{ active: tab.isSet(2) }"><a href ng-click="tab.setTab(2)">Profile</a></li>
                     </ul>
             </div>
         </div>
@@ -91,6 +92,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="container" ng-show="tab.isSet(2)">
         </div>
 
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
