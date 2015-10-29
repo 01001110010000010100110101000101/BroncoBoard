@@ -36,5 +36,8 @@ public class ClassScraper {
 		Collections.sort(classNamesList);
 		return classNamesList;
 	}
+	public String getURL(){
+		return url;
+	}
 
 }
