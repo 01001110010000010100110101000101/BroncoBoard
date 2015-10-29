@@ -25,6 +25,13 @@
         };
     }]);
 
+    app.directive('messageBox',function(){
+        return {
+            restrict:'E',
+            templateUrl: '/js/partials/message-box.html'
+        };
+    });
+
     app.controller('MessagingController', function() {
 
     });
