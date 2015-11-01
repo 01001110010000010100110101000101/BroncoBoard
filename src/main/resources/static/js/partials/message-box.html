@@ -1,3 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello WebSocket</title>
+    <script src="sockjs-0.3.4.js"></script>
+    <script src="stomp.js"></script>
+    <script type="text/javascript">
+   
+        var stompClient = null;
+   
+   
+        function connect() {
+            var socket = new SockJS('/hello');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function(frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/greetings', 
+                	function(greeting){
+                    	showGreeting(JSON.parse(greeting.body).content);
+                    
+                	});
+            	});
+        	}
+                    
+        document.getElementById('response').innerHTML = '';
+                    
+        function sendMessage() {
+            var message = document.getElementById('message').value;
+            stompClient.send("/app/userMessage", {}, JSON.stringify({ 'message': message }));
+        }
+
+        function showGreeting(message) {
+            var response = document.getElementById('response');
+            var p = document.createElement('p');
+            p.style.wordWrap = 'break-word';
+            p.appendChild(document.createTextNode(message));
+            response.appendChild(p);
+        }
+       
+    
+    
+   </script>
+</head>
+<body>
+ <script>
+        connect();
+ </script>
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
@@ -34,14 +81,22 @@
                 </div>
                 <div class="panel-footer">
                     <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                    
+                        <input id="message" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary btn-sm" id="btn-chat">
+                            <button class="btn btn-primary btn-sm" id="sendMessage" onclick="sendMessage();">
                                 Send</button>
+                                <p id="response"></p>
+        
                         </span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-1"></div>
         </div>
+        
+        
     </div>
+    
+    </body>
+</html>
