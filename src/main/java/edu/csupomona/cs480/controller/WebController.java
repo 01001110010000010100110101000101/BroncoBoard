@@ -157,6 +157,12 @@ public class WebController {
         ModelAndView models = new ModelAndView("login");
         return models;
     }
+    
+    @RequestMapping(value = "/chat", method = RequestMethod.GET)
+    ModelAndView getChat() {
+        ModelAndView models = new ModelAndView("chat");
+        return models;
+    }
    
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
