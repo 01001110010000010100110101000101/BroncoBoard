@@ -32,6 +32,18 @@
         };
     });
 
+    app.directive('message',function(){
+        return {
+            restrict:'E',
+            scope: {
+                name: '@',
+                time: '@',
+                content: '@',
+            },
+            templateUrl: '/js/partials/message.html'
+        };
+    });
+
     app.controller('MessagingController', function() {
 
     });
