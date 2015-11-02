@@ -10,13 +10,16 @@
             <generator class="identity" />
         </id>
         <property name="id" type="string">
-            <column name="USER_ID" length="60" not-null="true" unique="false" />
+            <column name="USER_ID" length="60" not-null="true" unique="true" />
+        </property>
+        <property name="pw" type="string">
+            <column name="USER_PW" length="30" not-null="true" unique="false" />
         </property>
         <property name="name" type="string">
             <column name="USER_NAME" length="45" not-null="true" unique="false" />
         </property>
         <property name="major" type="string">
-            <column name="USER_MAJOR" length="20" not-null="true" unique="false" />
+            <column name="USER_MAJOR" length="25" not-null="true" unique="false" />
         </property>
     </class>
 </hibernate-mapping>
