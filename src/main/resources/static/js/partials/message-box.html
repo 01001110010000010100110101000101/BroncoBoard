@@ -12,8 +12,7 @@
                 console.log('Connected: ' + frame);
                 stompClient.subscribe('/receive/cs480', 
                 	function(message){
-                    	showGreeting(JSON.parse(message.body).message);
-                    
+                    	showGreeting(message);
                 	});
             	});
         	}
@@ -27,11 +26,18 @@
         }
 
         function showGreeting(message) {
-            var response = document.getElementById('response');
-            var p = document.createElement('p');
-            p.style.wordWrap = 'break-word';
-            p.appendChild(document.createTextNode(message));
-            response.appendChild(p);
+            var chat = document.getElementById("chat");
+            /*
+            var m = document.createElement("message");
+            m.setAttribute("name", JSON.parse(message.body).name);
+            m.setAttribute("content", JSON.parse(message.body).message);
+            m.setAttribute("time", "0");
+            m.setAttribute("class", "ng-isolate-scope");
+            console.log(m);
+            */
+            var m = document.createElement("li");
+            m.innerHTML = JSON.parse(message.body).message;
+            chat.appendChild(m);
         }
     </script>
 </head>
@@ -49,7 +55,7 @@
                     <span class="glyphicon glyphicon-comment"></span> CLASS_NAME
                 </div>
                 <div class="panel-body" id="chat-box">
-                    <ul class="chat">
+                    <ul class="chat" id="chat">
                         <message name='User_1'
                         time='12'
                         content='Lorem ipsum dolor sit amet, 
