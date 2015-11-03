@@ -12,6 +12,8 @@ public class User {
 	/** The unique user Id */
     private String id;
     /** The unique user Id */
+    private String pw;
+    
     private String name;
     /** The unique user Id */
     private String major;
@@ -24,6 +26,14 @@ public class User {
     
     public void setNo(int no){
     	this.no = no;
+    }
+    
+    public String getPw(){
+    	return pw;
+    }
+    
+    public void setPw(String pw){
+    	this.pw = pw;
     }
 
     public String getId() {
