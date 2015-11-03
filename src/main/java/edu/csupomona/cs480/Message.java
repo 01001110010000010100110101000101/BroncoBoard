@@ -1,6 +1,6 @@
 package edu.csupomona.cs480;
 
-public class HelloMessage {
+public class Message {
 
     private String name;
     private String message;

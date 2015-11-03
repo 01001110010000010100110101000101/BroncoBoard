@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello WebSocket</title>
     <script src="sockjs-0.3.4.js"></script>
     <script src="stomp.js"></script>
     <script type="text/javascript">
         var stompClient = null;
         function connect() {
-            var socket = new SockJS('/hello');
+            var socket = new SockJS('/message');
             stompClient = Stomp.over(socket);
             stompClient.connect({}, function(frame) {
                 console.log('Connected: ' + frame);
-                stompClient.subscribe('/topic/greetings', 
-                	function(greeting){
-                    	showGreeting(JSON.parse(greeting.body).content);
+                stompClient.subscribe('/receive/cs480', 
+                	function(message){
+                    	showGreeting(JSON.parse(message.body).message);
                     
                 	});
             	});
@@ -23,7 +22,8 @@
                     
         function sendMessage() {
             var message = document.getElementById('message').value;
-            stompClient.send("/app/userMessage", {}, JSON.stringify({ 'message': message }));
+            document.getElementById('message').value = '';
+            stompClient.send("/app/send/cs480", {}, JSON.stringify({ 'name': 'user', 'message': message }));
         }
 
         function showGreeting(message) {
@@ -72,7 +72,7 @@
                             <button
                                 class="btn btn-primary btn-sm"
                                 id="sendMessage"
-                                onclick="sendMessage(); document.getElementById('message').value='';">SEND
+                                onclick="sendMessage();">SEND
                             </button>
                                 <p id="response"></p>
         
