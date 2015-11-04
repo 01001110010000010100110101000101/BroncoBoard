@@ -31,6 +31,9 @@ public class UserDao extends HibernateDaoSupport implements UserDaoInterface {
 	public User getUserById(String userID) {
 		List list = getHibernateTemplate().find("from User where id=?", userID);
 		
+		if (list.isEmpty())
+			return null;
+		
 		return (User)list.get(0);
 	}
 
