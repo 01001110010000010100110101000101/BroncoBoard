@@ -3,52 +3,7 @@
 <head>
     <script src="sockjs-0.3.4.js"></script>
     <script src="stomp.js"></script>
-    <script type="text/javascript">
-
-        $(document).ready(function() {
-            $('#message').keydown(function(event) {
-                if (event.keyCode == 13) {
-                    sendMessage();
-                 }
-            });
-        });
-
-        var stompClient = null;
-        function connect() {
-            var socket = new SockJS('/message');
-            stompClient = Stomp.over(socket);
-            stompClient.connect({}, function(frame) {
-                console.log('Connected: ' + frame);
-                stompClient.subscribe('/receive/cs480', 
-                	function(message){
-                    	showGreeting(message);
-                	});
-            	});
-        	}
-                    
-        document.getElementById('response').innerHTML = '';
-                    
-        function sendMessage() {
-            var message = document.getElementById('message').value;
-            document.getElementById('message').value = '';
-            stompClient.send("/app/send/cs480", {}, JSON.stringify({ 'name': 'user', 'message': message }));
-        }
-
-        function showGreeting(message) {
-            var chat = document.getElementById("chat");
-            /*
-            var m = document.createElement("message");
-            m.setAttribute("name", JSON.parse(message.body).name);
-            m.setAttribute("content", JSON.parse(message.body).message);
-            m.setAttribute("time", "0");
-            m.setAttribute("class", "ng-isolate-scope");
-            console.log(m);
-            */
-            var m = document.createElement("li");
-            m.innerHTML = JSON.parse(message.body).message;
-            chat.appendChild(m);
-        }
-    </script>
+    <script src="js/chatController.js"></script>
 </head>
 <body>
 
@@ -63,34 +18,19 @@
                 <div class="panel-heading">
                     <span class="glyphicon glyphicon-comment"></span> CLASS_NAME
                 </div>
-                <div class="panel-body" id="chat-box">
+                <div class="panel-body" id="chat-box" ng-controller="MessagingController">
                     <ul class="chat" id="chat">
-                        <message name='User_1'
-                        time='12'
-                        content='Lorem ipsum dolor sit amet, 
-                            consectetur adipiscing elit. Curabitur bibendum ornare dolor,
-                            quis ullamcorper ligula sodales.'>
-                        </message>
-                        <message 
-                            name='User_2'
-                            time='8'
-                            content="NOTICE: This is just the front end!!! 
-                                This doesn't have any functionality yet.">
-                        </message>
                     </ul>
                 </div>
                 <div class="panel-footer">
                     <div class="input-group">
-                    
-                        <input id="message" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <input id="message" type="text" class="form-control input-sm" placeholder="Type your message here..." required/>
                         <span class="input-group-btn">
                             <button
                                 class="btn btn-primary btn-sm"
                                 id="sendMessage"
                                 onclick="sendMessage();">SEND
                             </button>
-                                <p id="response"></p>
-        
                         </span>
                     </div>
                 </div>

@@ -44,8 +44,15 @@
         };
     });
 
-    app.controller('MessagingController', function() {
-
-    });
+    app.controller('MessagingController', ['$scope', '$compile', function($scope, $compile) {
+        $scope.appendMessage = function(message) {
+            var m = angular.element(document.createElement("message"));
+            m.attr('name', JSON.parse(message.body).name);
+            m.attr('content', JSON.parse(message.body).message);
+            m.attr('time', JSON.parse(message.body).time);
+            $compile(m)($scope);
+            angular.element(document.getElementById("chat")).append(m);
+        };
+    }]);
 
 })();
