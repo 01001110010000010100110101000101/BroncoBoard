@@ -1,6 +1,7 @@
 $(document).ready(function() {
     $('#message').keydown(function(event) {
-        if (event.keyCode == 13) {
+        var msg = document.getElementById('message').value;
+        if(event.keyCode == 13 && msg.match(/\S/)) {
             sendMessage();
          }
     });
