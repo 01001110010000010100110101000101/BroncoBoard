@@ -43,21 +43,6 @@ public class WebController {
     private UserManager userManager;
 
     /**
-     * This is a simple example of how the HTTP API works.
-     * It returns a String "OK" in the HTTP response.
-     * To try it, run the web application locally,
-     * in your web browser, type the link:
-     * 	http://localhost:8080/cs480/ping
-     */
-    @RequestMapping(value = "/cs480/ping", method = RequestMethod.GET)
-    String healthCheck() {
-    	// You can replace this with other string,
-    	// and run the application locally to check your changes
-    	// with the URL: http://localhost:8080/
-        return "OK";
-    }
-
-    /**
      * This is a simple example of how to use a data manager
      * to retrieve the data and return it as an HTTP response.
      * <p>
@@ -175,12 +160,6 @@ public class WebController {
     @RequestMapping(value = "/success", method = RequestMethod.GET)
     ModelAndView getTest() {
         ModelAndView model = new ModelAndView("success");
-        return model;
-    }
-    
-    @RequestMapping(value = "/rcptest", method = RequestMethod.GET)
-    ModelAndView getMyA5() {
-        ModelAndView model = new ModelAndView("rcptest");
         return model;
     }
 }
