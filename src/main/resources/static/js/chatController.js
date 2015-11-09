@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $('#message').keydown(function(event) {
-        var msg = document.getElementById('message').value;
-        if(event.keyCode == 13 && msg.match(/\S/)) {
+        if(event.keyCode == 13) {
             sendMessage();
          }
     });
@@ -23,6 +22,10 @@ function connect() {
             
 function sendMessage() {
     var message = document.getElementById('message').value;
+    // This prevents an empty message from being sent
+    if(message === '') {
+        return;
+    }
     document.getElementById('message').value = '';
     stompClient.send("/app/send/cs480", {}, JSON.stringify({ 'name': 'user', 'message': message }));
 }
