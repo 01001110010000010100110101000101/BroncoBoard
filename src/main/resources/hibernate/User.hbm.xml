@@ -18,8 +18,8 @@
         <property name="name" type="string">
             <column name="USER_NAME" length="45" not-null="true" unique="false" />
         </property>
-        <property name="major" type="string">
-            <column name="USER_MAJOR" length="25" not-null="true" unique="false" />
+        <property name="role" type="byte">
+            <column name="enabled" length="4" not-null="true" unique="false" />
         </property>
     </class>
 </hibernate-mapping>

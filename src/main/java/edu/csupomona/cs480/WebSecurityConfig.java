@@ -39,7 +39,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
-            .inMemoryAuthentication()
-                .withUser("user@cpp.edu").password("password").roles("USER");
+        	.jdbcAuthentication().dataSource(dataSource)
+        	.usersByUsernameQuery("select USER_ID, USER_PW, enabled from users where USER_ID=?")
+        	.authoritiesByUsernameQuery("select USER_ID, ROLE from authorities where USER_ID=?");
+            //.inMemoryAuthentication()
+                //.withUser("user@cpp.edu").password("password").roles("USER");
     }
 }
