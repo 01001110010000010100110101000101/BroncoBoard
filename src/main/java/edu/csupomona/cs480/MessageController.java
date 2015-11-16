@@ -14,4 +14,10 @@ public class MessageController {
         return message;
     } 
 
+    @MessageMapping("/send/cpp")
+    @SendTo("/receive/cpp")
+    public Message messageCPP(Message message) throws Exception {
+        return message;
+    } 
+
 }

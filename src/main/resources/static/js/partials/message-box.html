@@ -6,17 +6,16 @@
     <script src="js/chatController.js"></script>
 </head>
 <body>
-
     <script>
-        connect();
+        connect('cpp');
     </script>
-
+    <span id='current-board' hidden></span>
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <span class="glyphicon glyphicon-comment"></span> CLASS_NAME
+                    <span class="glyphicon glyphicon-comment" id="board-name"></span> 
                 </div>
                 <div class="panel-body" id="chat-box" ng-controller="MessagingController">
                     <ul class="chat" id="chat">
@@ -34,7 +33,7 @@
                             <button
                                 class="btn btn-primary btn-sm"
                                 id="sendMessage"
-                                onclick="sendMessage();">SEND
+                                onclick="sendMessage()">SEND
                             </button>
                         </span>
                     </div>

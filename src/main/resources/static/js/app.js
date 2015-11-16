@@ -53,6 +53,9 @@
             $compile(m)($scope);
             angular.element(document.getElementById("chat")).append(m);
         };
+        $scope.clear = function() {
+            angular.element(document.getElementById("chat")).empty();
+        };
     }]);
 
 })();
