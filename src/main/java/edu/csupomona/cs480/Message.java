@@ -5,6 +5,7 @@ import java.util.Date;
 public class Message {
 
     private String name;
+    private String destination;
     private String message;
     private long time;
     
@@ -15,6 +16,10 @@ public class Message {
     
     public String getName() {
         return name;
+    }
+    
+    public String getDestination() {
+    	return destination;
     }
     
     public String getMessage() {

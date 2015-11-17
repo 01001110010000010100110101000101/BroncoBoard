@@ -18,10 +18,12 @@ function connect(board) {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame) {
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/receive/'+board, 
+        stompClient.subscribe('/receive', 
             function(message){
-                angular.element($('#chat-box')).scope().appendMessage(message);
-                angular.element($('#chat-box')).scope().$apply();
+                if(JSON.parse(message.body).destination === board) {
+                    angular.element($('#chat-box')).scope().appendMessage(message);
+                    angular.element($('#chat-box')).scope().$apply();
+                }
             });
     });
 }
@@ -42,5 +44,5 @@ function sendMessage() {
         return;
     }
     document.getElementById('message').value = '';
-    stompClient.send('/app/send/'+board, {}, JSON.stringify({ 'name': 'user', 'message': message }));
+    stompClient.send('/app/send', {}, JSON.stringify({ 'name': 'user', 'destination': board, 'message': message }));
 }
