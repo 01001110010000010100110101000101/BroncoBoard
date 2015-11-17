@@ -9,7 +9,7 @@ public class Tests {
 	
 	@Test
 	public void testGetStringURL() {
-		ClassScraper cs = new ClassScraper();
+		ClassScraper cs = ClassScraper.getInstance();
 		String url=cs.getURL();
 		
 	}

@@ -30,7 +30,7 @@ public class WebController {
     /* This method lists all classes available */
     @RequestMapping(value = "/classes", method = RequestMethod.GET, produces = "application/JSON")
     String listAllClasses() {
-    	ClassScraper cs = new ClassScraper();
+    	ClassScraper cs = ClassScraper.getInstance();
     	ObjectMapper mapper = new ObjectMapper();
     	try {
     		return mapper.writeValueAsString(cs.getClassNames());

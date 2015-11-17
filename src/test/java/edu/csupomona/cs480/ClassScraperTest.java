@@ -9,7 +9,7 @@ public class ClassScraperTest {
 	
 	@Test
 	public void testGetClassNames() {
-		ClassScraper cs = new ClassScraper();
+		ClassScraper cs = ClassScraper.getInstance();
 		try {
             ArrayList<String> classes = cs.getClassNames();
             Assert.assertNotNull(classes);
