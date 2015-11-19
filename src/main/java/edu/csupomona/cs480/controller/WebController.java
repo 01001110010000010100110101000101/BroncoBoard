@@ -45,21 +45,12 @@ public class WebController {
         return models;
     }
     
-    @RequestMapping(value = "/chat", method = RequestMethod.GET)
-    ModelAndView getChat() {
-        ModelAndView models = new ModelAndView("chat");
-        return models;
-    }
-
+   
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     ModelAndView getSample() {
         ModelAndView model = new ModelAndView("registration");
         return model;
     }
 
-    @RequestMapping(value = "/success", method = RequestMethod.GET)
-    ModelAndView getTest() {
-        ModelAndView model = new ModelAndView("success");
-        return model;
-    }
+   
 }

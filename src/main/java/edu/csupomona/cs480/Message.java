@@ -2,7 +2,7 @@ package edu.csupomona.cs480;
 
 import java.util.Date;
 
-public class Message {
+public class Message implements MessageComponents {
 
     private String name;
     private String destination;
