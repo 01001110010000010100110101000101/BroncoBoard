@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,6 +52,16 @@ public class WebController {
     ModelAndView getSample() {
         ModelAndView model = new ModelAndView("registration");
         return model;
+    }
+
+    @RequestMapping(value = "/username", method = RequestMethod.GET, produces = "application/JSON")
+    String getUsername() throws Exception {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication == null) {
+        	throw new Exception("Could not retrieve username");
+        } else {
+            return authentication.getName();	
+        }
     }
 
    
