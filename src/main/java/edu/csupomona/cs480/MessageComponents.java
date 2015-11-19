@@ -1,5 +1,5 @@
 package edu.csupomona.cs480;
-
+//A9 abstract factory
 import java.util.Date;
 
 public interface MessageComponents {
