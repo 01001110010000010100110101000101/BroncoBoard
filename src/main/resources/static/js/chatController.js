@@ -44,5 +44,20 @@ function sendMessage() {
         return;
     }
     document.getElementById('message').value = '';
-    stompClient.send('/app/send', {}, JSON.stringify({ 'name': 'user', 'destination': board, 'message': message }));
+    var username = getUsername();
+    stompClient.send('/app/send', {}, JSON.stringify({ 'name': username, 'destination': board, 'message': message }));
+}
+
+function getUsername() {
+    var username;
+    $.ajax({
+        type: "GET",
+        url: window.location.origin + '/username',
+        contentType: "application/json; charset=utf-8",
+        async: false,
+        success: function(data) {
+            username = data.name;
+        }
+    });
+    return username;
 }

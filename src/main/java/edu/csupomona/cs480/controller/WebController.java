@@ -60,7 +60,7 @@ public class WebController {
         if(authentication == null) {
         	throw new Exception("Could not retrieve username");
         } else {
-            return authentication.getName();	
+            return "{ \"name\": \"" + authentication.getName() + "\" }";	
         }
     }
 
