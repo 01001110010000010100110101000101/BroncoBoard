@@ -4,6 +4,10 @@
     <script src="sockjs-0.3.4.js"></script>
     <script src="stomp.js"></script>
     <script src="js/chatController.js"></script>
+    <script src="js/typeahead.bundle.min.js"></script>
+    <script src="js/typeahead.jquery.min.js"></script>
+    <script src="js/bloodhound.min.js"></script>
+    <script src="js/autocomplete.js"></script>
 </head>
 <body>
     <script>
@@ -16,6 +20,16 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <span class="glyphicon glyphicon-comment" id="board-name"></span> 
+                    <div class="row">
+                    <form action="" class="search-form">
+                        <div class="form-group has-feedback">
+                            <div id="autocomplete">
+                                <input type="text" class="form-control typeahead" name="search" id="search">
+                            </div>
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </form>
+                    </div>
                 </div>
                 <div class="panel-body" id="chat-box" ng-controller="MessagingController">
                     <ul class="chat" id="chat">

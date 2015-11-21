@@ -17,47 +17,20 @@
                 </div>
                     <ul class="nav navbar-nav navbar-right nav-tabs">
                         <li role="presentation" ng-class="{ active: tab.isSet(0) }"><a href ng-click="tab.setTab(0)">Boards</a></li>
-                        <li role="presentation" ng-class="{ active: tab.isSet(1) }"><a href ng-click="tab.setTab(1)">Messaging</a></li>
-                        <li role="presentation" ng-class="{ active: tab.isSet(2) }"><a href ng-click="tab.setTab(2)">Profile</a></li>
+                        <li role="presentation" ng-class="{ active: tab.isSet(1) }"><a href ng-click="tab.setTab(1)">Profile</a></li>
                     </ul>
             </div>
         </div>
 
         <div class="container" id="app-body">
             <div class="container" ng-controller="BoardsController as b" ng-show="tab.isSet(0)">
-                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingOne">
-                            <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" href="#boardsCollapse" aria-expanded="false" aria-controls="boardsCollapse" ng-click="b.showClasses()">Show Classes</a>
-                            </h4>
-                        </div>
-                        <div class="panel-collapse collapse" id="boardsCollapse" role="tabpanel" aria-labelledby="headingOne">
-                            <div class="panel-body">
-                                <span ng-repeat="class in b.classes">
-                                    {{ class }},
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
-                    <div class="col-lg-12">
-                        Switch boards (temporary design):
-                        <ul class="nav nav-pills nav-justified">
-                            <li><a class="btn-default" onclick="connect('cpp')">CPP</a></li>
-                            <li><a class="btn-default" onclick="connect('cs480')">CS480</a></li>
-                        </ul>
-                    </div>
+                    <message-box></message-box>
                 </div>
             </div>
         </div>
 
         <div class="container" ng-show="tab.isSet(1)">
-            <message-box></message-box>
-        </div>
-
-        <div class="container" ng-show="tab.isSet(2)">
         </div>
 
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
