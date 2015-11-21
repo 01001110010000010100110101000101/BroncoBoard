@@ -35,8 +35,10 @@ $(document).ready(function() {
     $('#search').keydown(function(event) {
         if(event.keyCode == 13) {
             var board = document.getElementById('search');
-            connect(board.value);
-            board.form.reset();
+            if(board.value != "") {
+                connect(board.value);
+                board.form.reset();
+            }
          }
     });
 });

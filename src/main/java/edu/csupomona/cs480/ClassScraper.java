@@ -45,6 +45,7 @@ public class ClassScraper {
                     classNamesSet.add(department + number);
                 }
                 classNamesList = new ArrayList(classNamesSet);
+                classNamesList.add("CPP");
                 Collections.sort(classNamesList);
         }
 		return classNamesList;
