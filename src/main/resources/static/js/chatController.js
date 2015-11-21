@@ -9,6 +9,7 @@ $(document).ready(function() {
 
 var stompClient = null;
 function connect(board) {
+    board = board.toLowerCase();
     var currentBoard = $('#current-board');
     currentBoard.html(board);
     var boardName = $('#board-name');

@@ -51,3 +51,8 @@ $('#autocomplete .typeahead').typeahead({
   name: 'classes',
   source: substringMatcher(classes)
 });
+
+
+$('.typeahead').bind('typeahead:select', function(ev, board) {
+    connect(board);
+});
