@@ -44,6 +44,7 @@
             m.attr('time', JSON.parse(message.body).time);
             $compile(m)($scope);
             angular.element(document.getElementById("chat")).append(m);
+            $("#chat-box").stop().animate({scrollTop:$("#chat-box")[0].scrollHeight}, 100);
         };
         $scope.clear = function() {
             angular.element(document.getElementById("chat")).empty();

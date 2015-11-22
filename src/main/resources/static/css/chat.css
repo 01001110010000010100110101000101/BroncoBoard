@@ -26,7 +26,7 @@
 #chat-box
 {
     overflow-y: scroll;
-    height: 40em;
+    height: 44em;
 }
 
 .panel-heading {
@@ -89,4 +89,19 @@
 #scrollable-dropdown-menu .tt-dropdown-menu {
   max-height: 150px;
   overflow-y: auto;
+}
+
+#search:not(:hover) {
+    color: white;
+}
+
+.tt-menu {
+    background-color: white;
+    color: #777;
+    width: 170px;
+    padding: 14px;
+    font-size: 14px;
+    border: 1px solid #999;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
