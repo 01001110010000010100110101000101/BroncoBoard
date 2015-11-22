@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.ClassScraper;
+import edu.csupomona.cs480.Message;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.UserManager;
 
@@ -63,6 +64,17 @@ public class WebController {
             return "{ \"name\": \"" + authentication.getName() + "\" }";	
         }
     }
-
+    
+    @RequestMapping(value = "/messages/{board}", method = RequestMethod.GET, produces = "application/JSON")
+    String getMessages(@PathVariable("board") String board) {
+    	// @Sang Use SELECT statement here
+    	List<Message> messages = null;
+    	ObjectMapper mapper = new ObjectMapper();
+    	try {
+    		return mapper.writeValueAsString(messages);
+    	} catch(IOException e) {
+    		return null;
+    	}
+    }
    
 }
