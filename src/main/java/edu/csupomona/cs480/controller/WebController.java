@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.ClassScraper;
 import edu.csupomona.cs480.Message;
+import edu.csupomona.cs480.SmtpMailSender;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.UserManager;
 
@@ -28,8 +31,19 @@ public class WebController {
 
     @Autowired
     private UserManager userManager;
-
-
+    @Autowired
+    private SmtpMailSender smtp;
+    @RequestMapping("/send")
+    public String sendMessage() {
+    	try{
+    	smtp.sendMail("KevinAli50@yahoo.com", "test", "Please work");
+    	}catch(MessagingException e){
+    		e.printStackTrace();
+    	}
+		return "Mail Test";
+    	
+    }
+    
     /* This method lists all classes available */
     @RequestMapping(value = "/classes", method = RequestMethod.GET, produces = "application/JSON")
     String listAllClasses() {
