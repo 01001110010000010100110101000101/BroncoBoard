@@ -57,6 +57,11 @@
 			<artifactId>javax.mail-api</artifactId>
 			<version>1.5.4</version>
 		</dependency>
+		<dependency>
+   			<groupId>com.sun.mail</groupId>
+   	 		<artifactId>javax.mail</artifactId>
+    		<version>1.5.3</version>
+		</dependency>
 				
 		<!-- These are the dependency for the security -->		
 		<dependency>
