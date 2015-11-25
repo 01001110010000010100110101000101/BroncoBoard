@@ -51,7 +51,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
-		
+		<!-- For the email service -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.5.4</version>
+		</dependency>
+				
 		<!-- These are the dependency for the security -->		
 		<dependency>
             <groupId>org.springframework.boot</groupId>
