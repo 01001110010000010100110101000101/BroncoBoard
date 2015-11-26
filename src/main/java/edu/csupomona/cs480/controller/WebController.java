@@ -1,6 +1,7 @@
 package edu.csupomona.cs480.controller;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Set;
 
@@ -34,9 +35,9 @@ public class WebController {
     @Autowired
     private SmtpMailSender smtp;
     @RequestMapping("/send")
-    public String sendMessage() {
+    public String sendMessage() throws NoSuchAlgorithmException {
     	try{
-    	smtp.sendMail("KevinAli50@yahoo.com", "test", "Please work");
+    	smtp.sendMail("KevinAli50@yahoo.com", "test", "test");
     	}catch(MessagingException e){
     		e.printStackTrace();
     	}

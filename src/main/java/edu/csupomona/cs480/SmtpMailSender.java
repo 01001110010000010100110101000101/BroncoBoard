@@ -1,5 +1,6 @@
 package edu.csupomona.cs480;
 
+import java.security.NoSuchAlgorithmException;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +13,17 @@ public class SmtpMailSender {
 	@Autowired
 	private JavaMailSender mailsender;
 	
-	
-	public void sendMail(String to,String subject,String text) throws MessagingException{
+	//to subject and link
+	public void sendMail(String to,String subject,String text) throws MessagingException, NoSuchAlgorithmException{
+		String link = "http://www.broncoboard.me/registration/";
 		MimeMessage message =mailsender.createMimeMessage();
-		
+		link += MD5.hash(to);
 		MimeMessageHelper helper = new MimeMessageHelper(message,true);
+
 		helper.setSubject(subject);
 		helper.setTo(to);
-		helper.setText(text);
-		
+		helper.setText("Click here to activate your account\n" + link  );
+
 		mailsender.send(message);
 	}
 	
