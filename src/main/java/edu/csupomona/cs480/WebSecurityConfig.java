@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
             //This will list what links are not going to be authenticate so we will have to put in the registration page which i used as sample
-                .antMatchers("/send","/registration/**", "/chat","/cs480/ping", "/css/**", "/fonts/**", "/img/**", "/js/**").permitAll()
+                .antMatchers("/success/**","/send","/registration/**", "/chat","/cs480/ping", "/css/**", "/fonts/**", "/img/**", "/js/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
              //This is the login page i think we need to change the way to do login, 

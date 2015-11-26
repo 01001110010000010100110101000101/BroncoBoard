@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -41,9 +42,18 @@ public class WebController {
     	}catch(MessagingException e){
     		e.printStackTrace();
     	}
-		return "Mail Test";
-    	
+		return "Mail Test";	
     }
+    
+    @RequestMapping("/success/**")
+    public String check(HttpServletRequest request){
+    	if(request.getRequestURI().length()>9){
+    		String hash= request.getRequestURI().substring(9);
+    		return hash;
+    	}
+    	else return request.getRequestURI();
+    }
+    
     
     /* This method lists all classes available */
     @RequestMapping(value = "/classes", method = RequestMethod.GET, produces = "application/JSON")

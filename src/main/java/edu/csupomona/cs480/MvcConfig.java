@@ -11,7 +11,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
         //Change set view name to the success registration page
-        registry.addViewController("/registration/*").setViewName("registration");
+        registry.addViewController("/success/**").setViewName("sucess");
     }
 
 }
