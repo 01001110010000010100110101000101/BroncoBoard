@@ -48,7 +48,10 @@ public class MessageController {
     	long time = message.getTime();
     	
     	Connection con = getConnection();
-    	String query = "INSERT INTO messages(NAME, DEST, MESSAGE, TIME) values(?, ?, ?, ?)";
+    	String query = "IF NOT EXISTS (SELECT * FROM messages WHERE NAME = " + name + 
+    				   "AND MESSAGE = " + message +
+    				   "AND TIME = " + time +
+    			       ") INSERT INTO messages(NAME, DEST, MESSAGE, TIME) values(?, ?, ?, ?)";
     	
     	PreparedStatement pstmt = con.prepareStatement(query);
     	pstmt.setString(1, name);
