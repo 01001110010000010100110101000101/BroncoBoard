@@ -5,6 +5,15 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Set;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,6 +32,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.ClassScraper;
 import edu.csupomona.cs480.Message;
+import edu.csupomona.cs480.MessageController;
 import edu.csupomona.cs480.SmtpMailSender;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.UserManager;
@@ -91,15 +101,29 @@ public class WebController {
     }
     
     @RequestMapping(value = "/messages/{board}", method = RequestMethod.GET, produces = "application/JSON")
-    String getMessages(@PathVariable("board") String board) {
+    JSONArray getMessages(@PathVariable("board") String board) throws Exception {
+    	MessageController mc = new MessageController();
+    	Connection con = mc.getConnection();
+    	
     	// @Sang Use SELECT statement here
-    	List<Message> messages = null;
-    	ObjectMapper mapper = new ObjectMapper();
-    	try {
-    		return mapper.writeValueAsString(messages);
-    	} catch(IOException e) {
-    		return null;
+    	String query = "SELECT * FROM messages where DEST = ?";
+    	PreparedStatement pstmt = con.prepareStatement(query);
+    	pstmt.setString(1, board);
+    	ResultSet rs = pstmt.executeQuery();
+    	
+    	JSONArray jsonArray = new JSONArray();
+    	
+    	while(rs.next()) {
+    		int total_rows = rs.getMetaData().getColumnCount();
+    		JSONObject obj = new JSONObject();
+    		for (int i = 0; i < total_rows; i++) {
+    			obj.put(rs.getMetaData().getColumnLabel(i + 1)
+    					.toLowerCase(), rs.getObject(i + 1));
+    			jsonArray.put(obj);
+    		}
     	}
+    	
+    	return jsonArray;
     }
    
 }
