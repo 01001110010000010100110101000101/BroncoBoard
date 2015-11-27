@@ -3,6 +3,7 @@ package edu.csupomona.cs480;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -46,20 +47,28 @@ public class MessageController {
     	String destination = message.getDestination();
     	String content = message.getMessage();
     	long time = message.getTime();
-    	
+
     	Connection con = getConnection();
-    	String query = "IF NOT EXISTS (SELECT * FROM messages WHERE NAME = " + name + 
-    				   "AND MESSAGE = " + message +
-    				   "AND TIME = " + time +
-    			       ") INSERT INTO messages(NAME, DEST, MESSAGE, TIME) values(?, ?, ?, ?)";
     	
+    	String query = "SELECT * FROM messages where DEST = ? AND NAME = ? AND TIME = ? AND MESSAGE = ?";
     	PreparedStatement pstmt = con.prepareStatement(query);
-    	pstmt.setString(1, name);
-    	pstmt.setString(2, destination);
-    	pstmt.setString(3, content);
-    	pstmt.setLong(4, time);
+    	pstmt.setString(1, destination);
+    	pstmt.setString(2, name);
+    	pstmt.setString(3, Double.toString(time));
+    	pstmt.setString(4, content);
+    	ResultSet rs = pstmt.executeQuery();
     	
-    	pstmt.executeUpdate();
+    	if(!rs.next()) {
+            query = "INSERT INTO messages(NAME, DEST, MESSAGE, TIME) values(?, ?, ?, ?)";
+            
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1, name);
+            pstmt.setString(2, destination);
+            pstmt.setString(3, content);
+            pstmt.setLong(4, time);
+            
+            pstmt.executeUpdate();
+    	}
     	
         return message;
     } 
