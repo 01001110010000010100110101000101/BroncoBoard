@@ -101,11 +101,10 @@ public class WebController {
     }
     
     @RequestMapping(value = "/messages/{board}", method = RequestMethod.GET, produces = "application/JSON")
-    JSONArray getMessages(@PathVariable("board") String board) throws Exception {
+    String getMessages(@PathVariable("board") String board) throws Exception {
     	MessageController mc = new MessageController();
     	Connection con = mc.getConnection();
     	
-    	// @Sang Use SELECT statement here
     	String query = "SELECT * FROM messages where DEST = ?";
     	PreparedStatement pstmt = con.prepareStatement(query);
     	pstmt.setString(1, board);
@@ -122,8 +121,12 @@ public class WebController {
     			jsonArray.put(obj);
     		}
     	}
-    	
-    	return jsonArray;
+    	ObjectMapper mapper = new ObjectMapper();
+    	try {
+    		return mapper.writeValueAsString(jsonArray);
+    	} catch(IOException e) {
+    		return null;
+    	}
     }
    
 }
