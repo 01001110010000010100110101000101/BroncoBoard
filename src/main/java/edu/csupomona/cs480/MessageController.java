@@ -50,15 +50,14 @@ public class MessageController {
 
     	Connection con = getConnection();
     	
-    	String query = "SELECT * FROM messages where DEST = ? AND NAME = ? AND TIME = ? AND MESSAGE = ?";
+    	String query = "SELECT * FROM messages where DEST = ? AND NAME = ? AND MESSAGE = ?";
     	PreparedStatement pstmt = con.prepareStatement(query);
     	pstmt.setString(1, destination);
     	pstmt.setString(2, name);
-    	pstmt.setString(3, Double.toString(time));
-    	pstmt.setString(4, content);
+    	pstmt.setString(3, content);
     	ResultSet rs = pstmt.executeQuery();
     	
-    	if(!rs.next()) {
+    	if(!rs.first()) {
             query = "INSERT INTO messages(NAME, DEST, MESSAGE, TIME) values(?, ?, ?, ?)";
             
             pstmt = con.prepareStatement(query);
