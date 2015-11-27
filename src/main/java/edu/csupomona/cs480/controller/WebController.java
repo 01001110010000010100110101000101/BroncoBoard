@@ -121,12 +121,7 @@ public class WebController {
     			jsonArray.put(obj);
     		}
     	}
-    	ObjectMapper mapper = new ObjectMapper();
-    	try {
-    		return mapper.writeValueAsString(jsonArray);
-    	} catch(IOException e) {
-    		return null;
-    	}
+    	return jsonArray.toString();
     }
    
 }
