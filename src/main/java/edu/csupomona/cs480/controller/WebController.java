@@ -118,8 +118,8 @@ public class WebController {
     		for (int i = 0; i < total_rows; i++) {
     			obj.put(rs.getMetaData().getColumnLabel(i + 1)
     					.toLowerCase(), rs.getObject(i + 1));
-    			jsonArray.put(obj);
     		}
+    		jsonArray.put(obj);
     	}
     	return jsonArray.toString();
     }
