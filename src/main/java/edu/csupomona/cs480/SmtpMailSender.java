@@ -20,7 +20,6 @@ public class SmtpMailSender {
 		MimeMessage message =mailsender.createMimeMessage();
 		link += MD5.hash(to);
 		MimeMessageHelper helper = new MimeMessageHelper(message,true);
-		link +=hash;
 		helper.setSubject("Verification email for BroncoBoard");
 		helper.setTo(to);
 		helper.setText("Click here to activate your account\n" + link  );
