@@ -14,8 +14,8 @@ function connect(board) {
     currentBoard.html(board);
     var boardName = $('#board-name');
     boardName.html(' ' + board.toUpperCase());
-
     disconnect();
+    getMessages(board);
     var socket = new SockJS('/message');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame) {
@@ -62,4 +62,19 @@ function getUsername() {
         }
     });
     return username;
+}
+
+function getMessages(board) {
+    var messages;
+    $.ajax({
+        type: "GET",
+        url: window.location.origin + '/messages/' + board,
+        contentType: "application/json; charset=utf-8",
+        async: false,
+        success: function(data) {
+            messages = data;
+        }
+    });
+    console.log(messages);
+    return messages;
 }
