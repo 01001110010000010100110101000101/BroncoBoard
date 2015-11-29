@@ -46,7 +46,7 @@ public class WebController {
     @Autowired
     private SmtpMailSender smtp;
     @RequestMapping("/send")
-    public String sendMessage() throws NoSuchAlgorithmException {
+    public String sendMessage(HttpServletRequest request) throws NoSuchAlgorithmException {
     	try{
     	smtp.sendMail("KevinAli50@yahoo.com", "test", "test");
     	}catch(MessagingException e){
@@ -88,6 +88,10 @@ public class WebController {
     ModelAndView getSample() {
         ModelAndView model = new ModelAndView("registration");
         return model;
+    }
+    String test(HttpServletRequest request){
+    	
+    	return request.getParameter("email");
     }
 
     @RequestMapping(value = "/username", method = RequestMethod.GET, produces = "application/JSON")

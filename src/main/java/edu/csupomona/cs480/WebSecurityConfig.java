@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        http.csrf().disable()
             .authorizeRequests()
             //This will list what links are not going to be authenticate so we will have to put in the registration page which i used as sample
                 .antMatchers("/success/**","/send","/registration/**", "/chat","/cs480/ping", "/css/**", "/fonts/**", "/img/**", "/js/**").permitAll()
