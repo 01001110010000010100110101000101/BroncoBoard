@@ -8,17 +8,20 @@ import java.util.Date;
  */
 public class User {
 
-	private int no;
 	/** The unique user Id */
+	private int no;
     private String id;
-    /** The unique user Id */
     private String pw;
-    
-    private String name;
-    /** The unique user Id */
     private String role;
     /** The timestamp when the user is being created */
     private String creationTime = new Date(System.currentTimeMillis()).toString();
+    
+    public User() {}
+    
+    public User(String id, String pw) {
+    	this.id = id;
+    	this.pw = pw;
+    }
     
     public int getNo(){
     	return no;
@@ -43,14 +46,6 @@ public class User {
     public void setId(String id) {
         this.id = id;
     }
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getRole() {
 		return role;

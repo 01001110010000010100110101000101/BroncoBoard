@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -85,13 +86,19 @@ public class WebController {
     
    
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    ModelAndView getSample() {
+    ModelAndView getRegister() {
         ModelAndView model = new ModelAndView("registration");
         return model;
     }
+
     String test(HttpServletRequest request){
-    	
     	return request.getParameter("email");
+    }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    void postRegister(@ModelAttribute("User") User user) {
+    	System.out.println(user.getId());
+    	System.out.println(user.getPw());
     }
 
     @RequestMapping(value = "/username", method = RequestMethod.GET, produces = "application/JSON")

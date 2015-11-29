@@ -9,34 +9,34 @@
 
 	<body>
         <div class="container">
-            <form class="form-horizontal" action='' method="POST">
+            <form class="form-horizontal" action='/registration' method="POST">
                 <fieldset>
                     <div id="legend">
                         <legend class="">Register</legend>
                     </div>
                     <div class="control-group">
                         <!-- E-mail -->
-                        <label class="control-label" for="email">E-mail</label>
+                        <label class="control-label" for="id">E-mail</label>
                         <div class="controls">
-                            <input type="text" id="email" name="email" placeholder="" class="input-xlarge"></input>
+                            <input type="text" id="id" name="id" placeholder="" class="input-xlarge"></input>
                             <p class="help-block">Please provide your E-mail</p>
                         </div>
                     </div>
              
                     <div class="control-group">
                         <!-- Password-->
-                        <label class="control-label" for="password">Password</label>
+                        <label class="control-label" for="pw">Password</label>
                         <div class="controls">
-                            <input type="password" id="password" name="password" placeholder="" class="input-xlarge"></input>
+                            <input type="password" id="pw" name="pw" placeholder="" class="input-xlarge"></input>
                             <p class="help-block">Password should be at least 4 characters</p>
                         </div>
                     </div>
              
                     <div class="control-group">
                         <!-- Password -->
-                        <label class="control-label"    for="password_confirm">Password (Confirm)</label>
+                        <label class="control-label"    for="pw_confirm">Password (Confirm)</label>
                         <div class="controls">
-                            <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge"></input>
+                            <input type="password" id="pw_confirm" name="pw_confirm" placeholder="" class="input-xlarge"></input>
                             <p class="help-block">Please confirm password</p>
                         </div>
                     </div>
