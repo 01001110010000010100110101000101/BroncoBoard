@@ -47,15 +47,7 @@ public class WebController {
     private UserManager userManager;
     @Autowired
     private SmtpMailSender smtp;
-    @RequestMapping("/send")
-    public String sendMessage(HttpServletRequest request) throws NoSuchAlgorithmException {
-    	try{
-    	smtp.sendMail("KevinAli50@yahoo.com", "test", "test");
-    	}catch(MessagingException e){
-    		e.printStackTrace();
-    	}
-		return "Mail Test";	
-    }
+
     
     @RequestMapping("/success/**")
     public String check(HttpServletRequest request) throws SQLException{
@@ -110,7 +102,7 @@ public class WebController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    void postRegister(@ModelAttribute("User") User user) throws SQLException, NoSuchAlgorithmException {
+    String postRegister(@ModelAttribute("User") User user) throws SQLException, NoSuchAlgorithmException, MessagingException {
     	
     	MessageController db = new MessageController();
     	Connection con = db.getConnection();
@@ -131,6 +123,9 @@ public class WebController {
     	pstmt2.setString(1, email);
     	pstmt2.setString(2, "ROLE_USER");
     	pstmt2.executeUpdate();
+    	
+    	smtp.sendMail(email);
+    	return "Thank you for registering";
     }
 
     @RequestMapping(value = "/username", method = RequestMethod.GET, produces = "application/JSON")
