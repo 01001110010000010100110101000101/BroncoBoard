@@ -90,15 +90,10 @@ public class WebController {
         return models;
     }
     
-   
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     ModelAndView getRegister() {
         ModelAndView model = new ModelAndView("registration");
         return model;
-    }
-
-    String test(HttpServletRequest request){
-    	return request.getParameter("email");
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
