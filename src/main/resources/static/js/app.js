@@ -39,12 +39,18 @@
     app.controller('MessagingController', ['$scope', '$compile', function($scope, $compile) {
         $scope.appendMessage = function(message) {
             var m = angular.element(document.createElement("message"));
-            m.attr('name', JSON.parse(message.body).name);
-            m.attr('message', JSON.parse(message.body).message);
-            m.attr('time', JSON.parse(message.body).time);
+            if(message.body != null) {
+                m.attr('name', JSON.parse(message.body).name);
+                m.attr('message', JSON.parse(message.body).message);
+                m.attr('time', JSON.parse(message.body).time);
+                $("#chat-box").stop().animate({scrollTop:$("#chat-box")[0].scrollHeight}, 100);
+            } else {
+                m.attr('name', message.name);
+                m.attr('message', message.message);
+                m.attr('time', message.time);
+            }
             $compile(m)($scope);
             angular.element(document.getElementById("chat")).append(m);
-            $("#chat-box").stop().animate({scrollTop:$("#chat-box")[0].scrollHeight}, 100);
         };
         $scope.clear = function() {
             angular.element(document.getElementById("chat")).empty();
