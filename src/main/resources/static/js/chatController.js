@@ -15,9 +15,16 @@ function connect(board) {
     var boardName = $('#board-name');
     boardName.html(' ' + board.toUpperCase());
     disconnect();
-    getMessages(board);
+
     var socket = new SockJS('/message');
     stompClient = Stomp.over(socket);
+
+    var messages = getMessages(board);
+    for(var i = 0; i < messages.length; ++i) {
+        angular.element($('#chat-box')).scope().appendMessage(messages[i]);
+    }
+    
+
     stompClient.connect({}, function(frame) {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/receive', 
@@ -75,6 +82,5 @@ function getMessages(board) {
             messages = data;
         }
     });
-    console.log(messages);
     return messages;
 }

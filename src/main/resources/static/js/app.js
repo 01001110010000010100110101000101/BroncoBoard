@@ -30,7 +30,7 @@
             scope: {
                 name: '@',
                 time: '@',
-                content: '@',
+                message: '@',
             },
             templateUrl: '/js/partials/message.html'
         };
@@ -40,7 +40,7 @@
         $scope.appendMessage = function(message) {
             var m = angular.element(document.createElement("message"));
             m.attr('name', JSON.parse(message.body).name);
-            m.attr('content', JSON.parse(message.body).message);
+            m.attr('message', JSON.parse(message.body).message);
             m.attr('time', JSON.parse(message.body).time);
             $compile(m)($scope);
             angular.element(document.getElementById("chat")).append(m);
