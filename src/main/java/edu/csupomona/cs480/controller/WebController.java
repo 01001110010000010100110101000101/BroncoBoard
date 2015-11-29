@@ -32,6 +32,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.ClassScraper;
+import edu.csupomona.cs480.MD5;
 import edu.csupomona.cs480.Message;
 import edu.csupomona.cs480.MessageController;
 import edu.csupomona.cs480.SmtpMailSender;
@@ -57,9 +58,22 @@ public class WebController {
     }
     
     @RequestMapping("/success/**")
-    public String check(HttpServletRequest request){
+    public String check(HttpServletRequest request) throws SQLException{
+    	
+    	MessageController db = new MessageController();
+    	Connection con = db.getConnection();
+    	
+    	String query = "UPDATE users SET enabled = 1 WHERE HASH = ?";
+    	
+    	
     	if(request.getRequestURI().length()>9){
     		String hash= request.getRequestURI().substring(9);
+    		
+    		PreparedStatement ps = con.prepareStatement(query);
+    		ps.setString(1, hash);
+    		
+    		ps.executeUpdate();
+    		
     		return hash;
     	}
     	else return request.getRequestURI();
@@ -96,9 +110,27 @@ public class WebController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    void postRegister(@ModelAttribute("User") User user) {
-    	System.out.println(user.getId());
-    	System.out.println(user.getPw());
+    void postRegister(@ModelAttribute("User") User user) throws SQLException, NoSuchAlgorithmException {
+    	
+    	MessageController db = new MessageController();
+    	Connection con = db.getConnection();
+    	
+    	String email = user.getId();
+    	String pw = user.getPw();
+    	String hash = MD5.hash(email);
+    	
+    	String query = "INSERT INTO users(USER_ID, USER_PW, HASH) values(?, ?, ?)";
+    	PreparedStatement pstmt = con.prepareStatement(query);
+    	pstmt.setString(1, email);
+    	pstmt.setString(2, pw);
+    	pstmt.setString(3, hash);
+    	pstmt.executeUpdate();
+    	
+    	String query2 = "INSERT INTO authorities(USER_ID, ROLE) values(?, ?)";
+    	PreparedStatement pstmt2 = con.prepareStatement(query2);
+    	pstmt2.setString(1, email);
+    	pstmt2.setString(2, "ROLE_USER");
+    	pstmt2.executeUpdate();
     }
 
     @RequestMapping(value = "/username", method = RequestMethod.GET, produces = "application/JSON")
