@@ -22,6 +22,7 @@ function connect(board) {
     var messages = getMessages(board);
     for(var i = 0; i < messages.length; ++i) {
         angular.element($('#chat-box')).scope().appendMessage(messages[i]);
+        angular.element($('#chat-box')).scope().$apply();
     }
     
 
