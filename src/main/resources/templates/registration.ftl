@@ -18,7 +18,7 @@
                         <!-- E-mail -->
                         <label class="control-label" for="id">E-mail</label>
                         <div class="controls">
-                            <input type="text" id="id" name="id" placeholder="" class="input-xlarge"></input>
+                            <input type="email" id="id" name="id" placeholder="" class="input-xlarge" required></input>
                             <p class="help-block">Please provide your E-mail</p>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                         <!-- Password-->
                         <label class="control-label" for="pw">Password</label>
                         <div class="controls">
-                            <input type="password" id="pw" name="pw" placeholder="" class="input-xlarge"></input>
+                            <input type="password" id="pw" name="pw" placeholder="" class="input-xlarge" required></input>
                             <p class="help-block">Password should be at least 4 characters</p>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                         <!-- Password -->
                         <label class="control-label"    for="pw_confirm">Password (Confirm)</label>
                         <div class="controls">
-                            <input type="password" id="pw_confirm" name="pw_confirm" placeholder="" class="input-xlarge"></input>
+                            <input type="password" id="pw_confirm" name="pw_confirm" placeholder="" class="input-xlarge" required></input>
                             <p class="help-block">Please confirm password</p>
                         </div>
                     </div>
