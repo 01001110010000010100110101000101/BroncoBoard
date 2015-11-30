@@ -50,7 +50,7 @@ public class WebController {
 
     
     @RequestMapping("/success/**")
-    public String check(HttpServletRequest request) throws SQLException{
+    public ModelAndView check(HttpServletRequest request) throws SQLException{
     	
     	MessageController db = new MessageController();
     	Connection con = db.getConnection();
@@ -66,9 +66,10 @@ public class WebController {
     		
     		ps.executeUpdate();
     		
-    		return hash;
+    		ModelAndView model = new ModelAndView("post-activation");
+    		return model;
     	}
-    	else return request.getRequestURI();
+    	else return null;
     }
     
     
@@ -85,7 +86,7 @@ public class WebController {
     }
     
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    ModelAndView getHelp() {
+    ModelAndView getLogin() {
         ModelAndView models = new ModelAndView("login");
         return models;
     }
@@ -97,7 +98,7 @@ public class WebController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    String postRegister(@ModelAttribute("User") User user) throws SQLException, NoSuchAlgorithmException, MessagingException {
+    ModelAndView postRegister(@ModelAttribute("User") User user) throws SQLException, NoSuchAlgorithmException, MessagingException {
     	
     	MessageController db = new MessageController();
     	Connection con = db.getConnection();
@@ -120,7 +121,8 @@ public class WebController {
     	pstmt2.executeUpdate();
     	
     	smtp.sendMail(email);
-    	return "Thank you for registering";
+        ModelAndView models = new ModelAndView("post-registration");
+        return models;
     }
 
     @RequestMapping(value = "/username", method = RequestMethod.GET, produces = "application/JSON")
