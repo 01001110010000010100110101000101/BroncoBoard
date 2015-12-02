@@ -1,24 +1,28 @@
-Broncoboard is a web service that was created for the class of CS480 Fall 2015 
+##[Broncoboard] (http://www.broncoboard.me)
 
-By Kevin Ali, Dat Do , Sang Choi, and Aruther Le
+Broncoboard is a web service created for the class of CS480 Fall 2015 
 
-The issue we are trying to solve by creating this web application is lack of communication between classmates and teachers, and also.
+By Kevin Ali, Dat Do, Sang Choi, and Arthur Le
 
-So our team decided to create a service that would provide a place where classmates and teachers can communicate with each other outside of class.
+This web application tackles the issue of difficulty of communication between classmates and teachers.
 
-And create a easy environment to collaborate with classmate when assigned a group project. 
+Broncoboard provides a place where classmates and teachers can communicate with each other outside of class.
 
-We as a group felt that other chat systems such as the blackboard forums, where not sufficient enough as chat.
+It creates an environment to collaborate with classmates when assigned a group project. 
 
-Broncoboard used the spring io framework as its base for its back end chat and authentication system. 
+We felt that other chat systems, such as the Blackboard forums, were not adequate as a form of classroom communication.
 
-Bootstrap for most of the front end.
+#####Technologies used
 
-MySQL for the database.
+- AngularJS
+- AWS
+- Bootstrap
+- Jenkins CI
+- JQuery
+- JUnit
+- Maven
+- MySQL
+- Spring
 
-AWS to host the web service
 
-
-
-
-You can access Broncoboard (www.broncoboard.me)
+[Click here to access our web service] (http://www.broncoboard.me)
