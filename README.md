@@ -1,4 +1,4 @@
-##[Broncoboard] (www.broncoboard.me)
+##[Broncoboard] (http://www.broncoboard.me)
 
 Broncoboard is a web service created for the class of CS480 Fall 2015 
 
@@ -25,4 +25,4 @@ We felt that other chat systems, such as the Blackboard forums, were not adequat
 - Spring
 
 
-[Click here to access our web service] (www.broncoboard.me)
+[Click here to access our web service] (http://www.broncoboard.me)
